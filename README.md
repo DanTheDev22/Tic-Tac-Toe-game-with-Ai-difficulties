@@ -109,4 +109,3 @@ Name: Daniel
 
 Email: daniel1mogoreanu@gmail.com
 
-GitHub: daniel-m-dev
