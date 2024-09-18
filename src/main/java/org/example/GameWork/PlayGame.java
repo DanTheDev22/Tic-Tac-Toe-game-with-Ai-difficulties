@@ -1,4 +1,8 @@
 package org.example.GameWork;
+import org.example.AiLevels.AiHardLevel;
+import org.example.AiLevels.AiLevel;
+import org.example.AiLevels.AiMediumLevel;
+import org.example.AiLevels.AiSimpleLevel;
 import org.example.PlayerModel.PlayerType;
 import java.util.HashMap;
 import java.util.Map;
@@ -6,7 +10,6 @@ import java.util.Scanner;
 
 import static org.example.GameWork.GameInitialization.initGame;
 import static org.example.GameWork.Grid.printGrid;
-import static org.example.GameWork.MakeMove.makeMove;
 import static org.example.WinSystem.DrawChecking.checkDraw;
 import static org.example.WinSystem.Winner.playerWon;
 
@@ -18,12 +21,16 @@ public class PlayGame {
         char currentPlayer = 'X'; // X always starts
 
         // Map to store the player type for 'X' and 'O'
-        Map<Character, PlayerType> players = new HashMap<>();
-        players.put('X', playerX);
-        players.put('O', playerO);
+        Map<PlayerType, AiLevel> aiLevels = new HashMap<>();
+        aiLevels.put(PlayerType.EASY,new AiSimpleLevel());
+        aiLevels.put(PlayerType.MEDIUM,new AiMediumLevel());
+        aiLevels.put(PlayerType.HARD,new AiHardLevel());
 
         while (true) {
-            makeMove (game, currentPlayer, players.get(currentPlayer), scanner); // calling the method for playerTypes
+            PlayerType currentPlayerType = (currentPlayer == 'X') ? playerX : playerO;
+            AiLevel aiLevel = aiLevels.get(currentPlayer);
+            MakeMove makeMove = new MakeMove(aiLevel);
+            makeMove.makeMove (game, currentPlayer, currentPlayerType, scanner); // calling the method for playerTypes
             // if its user, then it will require coordinates , if its Ai, it will return a move
             printGrid(game);
 

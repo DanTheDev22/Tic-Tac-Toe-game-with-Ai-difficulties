@@ -2,8 +2,10 @@ package org.example.AiLevels;
 
 import java.util.Random;
 
-public class AiSimpleLevel {
-    public static int AiSimple(char[] game) {
+public class AiSimpleLevel implements AiLevel {
+
+    @Override
+    public int getMove(char[] game, char currentPlayer) {
         int min = 0;
         int max = 8;
         Random random = new Random();

@@ -2,9 +2,10 @@ package org.example.AiLevels;
 
 import static org.example.AiLevels.Minimax.minimax;
 
-public class AiHardLevel {
+public class AiHardLevel implements AiLevel {
 
-    public static int AiHard (char[] game, char currentPlayer) {
+    @Override
+    public int getMove (char[] game, char currentPlayer) {
     int bestMove = -1;
     int bestValue = Integer.MIN_VALUE;
 

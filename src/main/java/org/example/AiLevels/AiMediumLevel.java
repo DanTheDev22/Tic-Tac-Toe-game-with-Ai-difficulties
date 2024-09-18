@@ -1,10 +1,13 @@
 package org.example.AiLevels;
 
-import static org.example.AiLevels.AiSimpleLevel.AiSimple;
 import static org.example.AiLevels.WinningMove.findWinningMove;
 
-public class AiMediumLevel {
-    public static int AiMedium(char[] game, char currentPlayer) {
+public class AiMediumLevel implements AiLevel {
+
+
+    @Override
+    public int getMove(char[] game, char currentPlayer) {
+        AiSimpleLevel aiSimpleLevel = new AiSimpleLevel();
         char opponent = (currentPlayer == 'X') ? 'O' : 'X';
 
         int winningMove = findWinningMove(game,currentPlayer);
@@ -17,7 +20,7 @@ public class AiMediumLevel {
             return blockingMove;
         }
 
-        return AiSimple(game);
+        return aiSimpleLevel.getMove(game,currentPlayer);
     }
 
 }
