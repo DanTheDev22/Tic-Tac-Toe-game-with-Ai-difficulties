@@ -13,7 +13,6 @@ public class Main {
     static final Pattern PATTERN = Pattern.compile("^-?\\d+\\s+-?\\d+$");
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
         // Infinite loop to keep taking commands until "exit" is entered
         while (true) {
             System.out.print("Input command: ");

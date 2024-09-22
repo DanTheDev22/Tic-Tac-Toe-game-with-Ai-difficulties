@@ -6,14 +6,10 @@ import java.util.Scanner;
 import static org.example.GameWork.GetMove.getMove;
 
 public class MakeMove {
-
-
     private final AiLevel aiLevel;
-
     public MakeMove(AiLevel aiLevel) {
         this.aiLevel=aiLevel;
     }
-
     public void makeMove(char[] game, char player, PlayerType playerType, Scanner scanner) {
         if (playerType == PlayerType.USER) {
             boolean validMove = false;

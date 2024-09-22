@@ -19,21 +19,19 @@ public class PlayGame {
         char[] game = initGame(); // the game is initializing
         printGrid(game);
         char currentPlayer = 'X'; // X always starts
-
         // Map to store the player type for 'X' and 'O'
         Map<PlayerType, AiLevel> aiLevels = new HashMap<>();
         aiLevels.put(PlayerType.EASY,new AiSimpleLevel());
         aiLevels.put(PlayerType.MEDIUM,new AiMediumLevel());
         aiLevels.put(PlayerType.HARD,new AiHardLevel());
-
         while (true) {
             PlayerType currentPlayerType = (currentPlayer == 'X') ? playerX : playerO;
-            AiLevel aiLevel = aiLevels.get(currentPlayer);
+
+            AiLevel aiLevel = aiLevels.get(currentPlayerType); // Fix: Use currentPlayerType here
             MakeMove makeMove = new MakeMove(aiLevel);
             makeMove.makeMove (game, currentPlayer, currentPlayerType, scanner); // calling the method for playerTypes
             // if its user, then it will require coordinates , if its Ai, it will return a move
             printGrid(game);
-
             // Check for a winner or a draw
             if (playerWon('X',game)) {
                 System.out.println("X wins");

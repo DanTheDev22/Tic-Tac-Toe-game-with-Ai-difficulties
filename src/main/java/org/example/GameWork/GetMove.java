@@ -19,14 +19,11 @@ public class GetMove {
         try {
             int i = Integer.parseInt(in[0]);
             int j = Integer.parseInt(in[1]);
-
             if ((i > 3 || i < 1) || (j > 3 || j < 1)) {
                 System.out.println("Coordinates should be from 1 to 3!");
                 return -1;
             }
-
             index = (i - 1) * 3 + (j - 1);
-
             if (game[index] == 'X' || game[index] == 'O') {
                 System.out.println("This cell is occupied! Choose another one!");
                 return -1;
